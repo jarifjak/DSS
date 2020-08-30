@@ -48,4 +48,8 @@
     <string name="confirm">Confirm</string>
     <string name="next">Next</string>
     <string name="employee_info">Employee Info</string>
+    <string name="delete">Delete</string>
+    <string name="back">Back</string>
+    <string name="fail">Fail</string>
+    <string name="okay">Okay</string>
 </resources>

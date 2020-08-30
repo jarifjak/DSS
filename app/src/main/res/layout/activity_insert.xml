@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_40sdp"
             android:layout_marginEnd="@dimen/_25sdp"
             android:visibility="visible"
             app:cardCornerRadius="10dp"
@@ -645,47 +645,116 @@
 
         </androidx.cardview.widget.CardView>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/insertBTN"
-            android:layout_width="@dimen/_130sdp"
+        <LinearLayout
+            android:id="@+id/employeeButtonLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/employeeCV"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_12sdp"
-            android:background="@drawable/button_ripple_bg"
-            android:text="@string/insert"
-            android:textColor="@android:color/white"
-            android:visibility="visible"
-            tools:ignore="UnusedAttribute" />
+            android:layout_below="@+id/employeeCV"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/nextBTN"
-            android:layout_width="@dimen/_130sdp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/branchOneCV"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_12sdp"
-            android:background="@drawable/button_ripple_bg"
-            android:text="@string/next"
-            android:textColor="@android:color/white"
-            android:visibility="gone"
-            tools:ignore="UnusedAttribute" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/deleteEmployeeBTN"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:background="@drawable/bg_button_delete"
+                android:text="@string/delete"
+                android:textColor="@color/CustomAccentFive"
+                android:visibility="visible"
+                tools:ignore="UnusedAttribute" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/confirmBTN"
-            android:layout_width="@dimen/_130sdp"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/insertBTN"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:background="@drawable/button_ripple_bg"
+                android:text="@string/insert"
+                android:textColor="@android:color/white"
+                android:visibility="visible"
+                tools:ignore="UnusedAttribute" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/branchOneButtonLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/branchTwoCV"
-            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/branchOneCV"
             android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_12sdp"
-            android:background="@drawable/button_ripple_bg"
-            android:text="@string/confirm"
-            android:textColor="@android:color/white"
-            android:visibility="gone"
-            tools:ignore="UnusedAttribute" />
+            android:gravity="center"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/deleteBranchBTN"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:background="@drawable/bg_button_delete"
+                android:text="@string/delete"
+                android:textColor="@color/CustomAccentFive"
+                android:visibility="visible"
+                tools:ignore="UnusedAttribute" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/nextBTN"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/button_ripple_bg"
+                android:text="@string/next"
+                android:textColor="@android:color/white"
+                android:visibility="visible"
+                tools:ignore="UnusedAttribute" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/branchTwoButtonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/branchTwoCV"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/backBranchBTN"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/bg_button_delete"
+                android:text="@string/back"
+                android:textColor="@color/CustomAccentFive"
+                android:visibility="visible"
+                tools:ignore="UnusedAttribute" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/confirmBTN"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:background="@drawable/button_ripple_bg"
+                android:text="@string/confirm"
+                android:textColor="@android:color/white"
+                android:visibility="visible"
+                tools:ignore="UnusedAttribute" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

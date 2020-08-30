@@ -180,6 +180,12 @@ public class MainRepository {
         @Override
         protected final Void doInBackground(List<Employee>... lists) {
 
+
+            if (lists[0] == null || lists[0].size() == 0) {
+
+                return null;
+            }
+
             employeeDao.insertEmployees(lists[0]);
 
             return null;
@@ -216,6 +222,11 @@ public class MainRepository {
         @SafeVarargs
         @Override
         protected final Void doInBackground(List<Branch>... lists) {
+
+            if (lists[0] == null || lists[0].size() == 0) {
+
+                return null;
+            }
 
             branchDao.insertBranches(lists[0]);
 

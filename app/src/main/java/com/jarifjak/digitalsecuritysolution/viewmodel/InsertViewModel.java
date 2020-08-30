@@ -86,6 +86,21 @@ public class InsertViewModel extends AndroidViewModel {
         return isSuccessful;
     }
 
+    public LiveData<Boolean> deleteEmployee(String key) {
+
+        repository.deleteEmployee(key, new FirebaseListener() {
+
+            @Override
+            public void onOperationComplete(boolean successStatus) {
+
+                isSuccessful.setValue(successStatus);
+
+            }
+        });
+
+        return isSuccessful;
+    }
+
     public LiveData<Boolean> insertBranch(Branch branch) {
 
         repository.insertBranch(branch, new FirebaseListener() {
@@ -104,6 +119,21 @@ public class InsertViewModel extends AndroidViewModel {
     public LiveData<Boolean> updateBranch(Branch branch) {
 
         repository.insertBranch(branch, new FirebaseListener() {
+
+            @Override
+            public void onOperationComplete(boolean successStatus) {
+
+                isSuccessful.setValue(successStatus);
+
+            }
+        });
+
+        return isSuccessful;
+    }
+
+    public LiveData<Boolean> deleteBranch(String key) {
+
+        repository.deleteBranch(key, new FirebaseListener() {
 
             @Override
             public void onOperationComplete(boolean successStatus) {

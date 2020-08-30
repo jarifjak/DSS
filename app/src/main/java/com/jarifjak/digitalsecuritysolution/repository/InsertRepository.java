@@ -7,11 +7,8 @@ import androidx.lifecycle.LiveData;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.jarifjak.digitalsecuritysolution.database.AppDatabase;
 import com.jarifjak.digitalsecuritysolution.database.BranchDao;
 import com.jarifjak.digitalsecuritysolution.database.EmployeeDao;
@@ -124,6 +121,23 @@ public class InsertRepository {
         });
     }
 
+    public void deleteEmployee(String key, FirebaseListener listener) {
+
+        this.listener = listener;
+
+        reference = FirebaseDatabase.getInstance().getReference().child("Employees");
+
+        reference.child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                listener.onOperationComplete(task.isSuccessful());
+
+            }
+        });
+    }
+
     public void insertBranch(Branch branch, FirebaseListener listener) {
 
         this.listener = listener;
@@ -170,7 +184,23 @@ public class InsertRepository {
 
     }
 
+    public void deleteBranch(String key, FirebaseListener listener) {
 
+        this.listener = listener;
+
+        reference = FirebaseDatabase.getInstance().getReference().child("Branches");
+
+        reference.child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                listener.onOperationComplete(task.isSuccessful());
+
+            }
+        });
+
+    }
 
 
 

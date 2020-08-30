@@ -45,14 +45,22 @@ public class EmployeeProfileActivity extends AppCompatActivity {
     @BindView(R.id.secondMNumberTV)
     AppCompatTextView secondMNumberTV;
 
+    private static EmployeeProfileActivity activity;
     private EmployeeProfileViewModel viewmodel;
     private int employeeId;
+
+    public static EmployeeProfileActivity getInstance() {
+        return activity;
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        this.activity = this;
+
         setContentView(R.layout.activity_employee_profile);
         ButterKnife.bind(this);
 
@@ -118,6 +126,7 @@ public class EmployeeProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(this, InsertActivity.class);
         intent.putExtra(Constants.ACTIVITY_TYPE, 4);
         intent.putExtra(Constants.ID, employeeId);
+
 
         startActivity(intent);
     }

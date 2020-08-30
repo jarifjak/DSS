@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -14,12 +15,19 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.solver.GoalRow;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.chivorn.smartmaterialspinner.SmartMaterialSpinner;
+import com.google.gson.Gson;
 import com.jarifjak.digitalsecuritysolution.R;
+import com.jarifjak.digitalsecuritysolution.dialog.CustomDialog;
 import com.jarifjak.digitalsecuritysolution.model.Branch;
+import com.jarifjak.digitalsecuritysolution.model.DialogExtra;
 import com.jarifjak.digitalsecuritysolution.model.Employee;
 import com.jarifjak.digitalsecuritysolution.utility.Constants;
 import com.jarifjak.digitalsecuritysolution.viewmodel.InsertViewModel;
@@ -32,7 +40,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class InsertActivity extends AppCompatActivity {
+public class InsertActivity extends AppCompatActivity implements CustomDialog.DialogListener {
 
     @BindView(R.id.progressbar)
     ProgressBar progressbar;
@@ -54,12 +62,7 @@ public class InsertActivity extends AppCompatActivity {
     CardView branchOneCV;
     @BindView(R.id.branchTwoCV)
     CardView branchTwoCV;
-    @BindView(R.id.insertBTN)
-    AppCompatButton insertBTN;
-    @BindView(R.id.nextBTN)
-    AppCompatButton nextBTN;
-    @BindView(R.id.confirmBTN)
-    AppCompatButton confirmBTN;
+
 
     @BindView(R.id.idBranchET)
     AppCompatEditText idBranchET;
@@ -81,6 +84,21 @@ public class InsertActivity extends AppCompatActivity {
     @BindView(R.id.progressbarOfBranch)
     ProgressBar progressbarOfBranch;
 
+    @BindView(R.id.deleteEmployeeBTN)
+    AppCompatButton deleteEmployeeBTN;
+    @BindView(R.id.insertBTN)
+    AppCompatButton insertBTN;
+    @BindView(R.id.deleteBranchBTN)
+    AppCompatButton deleteBranchBTN;
+    @BindView(R.id.confirmBTN)
+    AppCompatButton confirmBTN;
+    @BindView(R.id.employeeButtonLayout)
+    LinearLayout employeeButtonLayout;
+    @BindView(R.id.branchOneButtonLayout)
+    LinearLayout branchOneButtonLayout;
+    @BindView(R.id.branchTwoButtonLayout)
+    LinearLayout branchTwoButtonLayout;
+
     private InsertViewModel viewModel;
 
     private static int activityType;
@@ -88,7 +106,9 @@ public class InsertActivity extends AppCompatActivity {
     private String key;                    //store for updating
     private List<String> branchNames;
     private static Branch branch;
+    private DialogFragment dialog;
     private boolean busy;
+    private boolean dialogBusy;
 
 
     @Override
@@ -113,6 +133,8 @@ public class InsertActivity extends AppCompatActivity {
             id = getIntent().getIntExtra(Constants.ID, 0);
 
         }
+
+        dialog = new DialogFragment(); //for avoiding null exception
 
         viewModel = new ViewModelProvider(this).get(InsertViewModel.class);
 
@@ -245,44 +267,59 @@ public class InsertActivity extends AppCompatActivity {
 
         if (viewType == 1) {
 
+            //For employee insert
+
             employeeCV.setVisibility(View.VISIBLE);
-            insertBTN.setVisibility(View.VISIBLE);
+            employeeButtonLayout.setVisibility(View.VISIBLE);
+
+            deleteEmployeeBTN.setVisibility(View.GONE);
 
         } else if (viewType == 2) {
 
+            //For branch insert 1st page
+
             employeeCV.setVisibility(View.GONE);
-            insertBTN.setVisibility(View.GONE);
+            employeeButtonLayout.setVisibility(View.GONE);
 
             branchTwoCV.setVisibility(View.GONE);
-            confirmBTN.setVisibility(View.GONE);
+            branchTwoButtonLayout.setVisibility(View.GONE);
 
             branchOneCV.setVisibility(View.VISIBLE);
-            nextBTN.setVisibility(View.VISIBLE);
+            branchOneButtonLayout.setVisibility(View.VISIBLE);
+            deleteBranchBTN.setVisibility(View.GONE);
 
         } else if (viewType == 3) {
 
+            //For branch insert 2nd page
+
             branchOneCV.setVisibility(View.GONE);
-            nextBTN.setVisibility(View.GONE);
+            branchOneButtonLayout.setVisibility(View.GONE);
 
             branchTwoCV.setVisibility(View.VISIBLE);
-            confirmBTN.setVisibility(View.VISIBLE);
+            branchTwoButtonLayout.setVisibility(View.VISIBLE);
 
         } else if (viewType == 4) {
 
+            //For employee update
+
             employeeCV.setVisibility(View.VISIBLE);
             insertBTN.setText("UPDATE");
-            insertBTN.setVisibility(View.VISIBLE);
+
+            employeeButtonLayout.setVisibility(View.VISIBLE);
 
         } else if (viewType == 5) {
 
+            //For branch update
+
             employeeCV.setVisibility(View.GONE);
-            insertBTN.setVisibility(View.GONE);
+            employeeButtonLayout.setVisibility(View.GONE);
 
             branchTwoCV.setVisibility(View.GONE);
-            confirmBTN.setVisibility(View.GONE);
+            branchTwoButtonLayout.setVisibility(View.GONE);
 
             branchOneCV.setVisibility(View.VISIBLE);
-            nextBTN.setVisibility(View.VISIBLE);
+            branchOneButtonLayout.setVisibility(View.VISIBLE);
+
             confirmBTN.setText("UPDATE");
         }
     }
@@ -372,13 +409,19 @@ public class InsertActivity extends AppCompatActivity {
 
                 progressbar.setVisibility(View.GONE);
 
-                Toast.makeText(InsertActivity.this, aBoolean ? "Successful" : "Failed", Toast.LENGTH_SHORT).show();
                 busy = false;
 
                 if (activityType == 4) {
 
+                    Toast.makeText(InsertActivity.this, aBoolean ? "Successful" : "Failed", Toast.LENGTH_SHORT).show();
                     finish();
+
+                } else {
+
+                    showCustomDialog(1);
+
                 }
+
             }
         };
 
@@ -392,6 +435,32 @@ public class InsertActivity extends AppCompatActivity {
 
             viewModel.updateEmployee(employee).observe(this, observer);
         }
+    }
+
+
+    private void deleteEmployee() {
+
+        viewModel.deleteEmployee(key).observe(InsertActivity.this, new Observer<Boolean>() {
+
+            @Override
+            public void onChanged(Boolean aBoolean) {
+
+                if (aBoolean == null) {
+
+                    return;
+                }
+
+                Toast.makeText(InsertActivity.this, aBoolean ? "Successful" : "Failed", Toast.LENGTH_SHORT).show();
+
+                if (aBoolean) {
+
+                    EmployeeProfileActivity.getInstance().finish();
+                    finish();
+
+                }
+            }
+        });
+
     }
 
     private boolean isFirstPageCorrect() {
@@ -502,13 +571,18 @@ public class InsertActivity extends AppCompatActivity {
             public void onChanged(Boolean aBoolean) {
 
                 progressbarOfBranch.setVisibility(View.GONE);
-                Toast.makeText(InsertActivity.this, aBoolean ? "Successful" : "Failed", Toast.LENGTH_SHORT).show();
 
                 busy = false;
 
                 if (activityType == 5) {
 
+                    Toast.makeText(InsertActivity.this, aBoolean ? "Successful" : "Failed", Toast.LENGTH_SHORT).show();
                     finish();
+
+                } else {
+
+                    showCustomDialog(1);
+
                 }
             }
         };
@@ -523,6 +597,25 @@ public class InsertActivity extends AppCompatActivity {
             viewModel.updateBranch(branch).observe(this, observer);
 
         }
+    }
+
+    private void deleteBranch() {
+
+        viewModel.deleteBranch(key).observe(InsertActivity.this, new Observer<Boolean>() {
+
+            @Override
+            public void onChanged(Boolean aBoolean) {
+
+                if (aBoolean == null) {
+
+                    return;
+                }
+
+                Toast.makeText(InsertActivity.this, aBoolean ? "Successful" : "Failed", Toast.LENGTH_SHORT).show();
+
+                finish();
+            }
+        });
     }
 
     private void setEmployeeInfo(Employee employee) {
@@ -548,8 +641,43 @@ public class InsertActivity extends AppCompatActivity {
 
     }
 
+    private void showCustomDialog(int flag) {
 
-    @OnClick({R.id.circleTwoIV, R.id.mCircleOneIV, R.id.insertBTN, R.id.nextBTN, R.id.confirmBTN})
+        if (dialog.isVisible()) {
+
+            return;
+        }
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment prevFragment = getSupportFragmentManager().findFragmentByTag(Constants.DIALOG_TAG);
+
+        if (prevFragment != null) {
+
+            ft.remove(prevFragment);
+        }
+
+        ft.addToBackStack(null);
+
+        if (flag == 4) {
+
+            String object = activityType == 4 ? "employee" : "branch";
+
+            String jsonObject = new Gson().toJson(new DialogExtra("Delete", "Do you want to delete this " + object + " ?"));
+            dialog = CustomDialog.newInstance(Constants.DIALOG_TWO_BUTTON, flag, jsonObject);
+
+        } else if (flag == 1) {
+
+            String object = activityType == 1 ? "Employee" : "Branch";
+
+            String jsonObject = new Gson().toJson(new DialogExtra("Inserted", object + " has been inserted successfully"));
+            dialog = CustomDialog.newInstance(Constants.DIALOG_ONE_BUTTON, flag, jsonObject);
+
+        }
+
+        dialog.show(ft, Constants.DIALOG_TAG);
+    }
+
+    @OnClick({R.id.circleTwoIV, R.id.mCircleOneIV, R.id.deleteEmployeeBTN, R.id.insertBTN, R.id.deleteBranchBTN, R.id.nextBTN, R.id.backBranchBTN, R.id.confirmBTN})
     public void onViewClicked(View view) {
 
         int id = view.getId();
@@ -576,6 +704,17 @@ public class InsertActivity extends AppCompatActivity {
             progressbarOfBranch.setVisibility(View.VISIBLE);
             insertOrUpdateBranch();
 
+        } else if (id == R.id.backBranchBTN) {
+
+            setViewVisibility(2);
+
+        } else if (id == R.id.deleteEmployeeBTN) {
+
+            showCustomDialog(4);
+
+        } else if (id == R.id.deleteBranchBTN) {
+
+            deleteBranch();
         }
     }
 
@@ -589,5 +728,19 @@ public class InsertActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onConfirmClick(int flag) {
+
+        if (flag == 4) {
+
+            deleteEmployee();
+
+        } else if (flag == 5) {
+
+            deleteBranch();
+        }
     }
 }
