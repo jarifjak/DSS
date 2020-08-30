@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:focusable="true"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".view.fragment.HomeFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50"/>
+
+    <View
+        android:id="@+id/topBorder"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_115sdp"
+        android:background="@drawable/bg_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/searchET"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:imeOptions="actionSearch"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:background="@drawable/bg_search_edit_text"
+        android:elevation="2dp"
+        android:hint="@string/searchHint"
+        android:paddingStart="@dimen/_15sdp"
+        android:textAlignment="textStart"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/selectBranchLayout"
+        android:layout_width="@dimen/_115sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_spinner"
+        android:layout_marginStart="@dimen/_35sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="@id/topBorder"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="@id/guideline_v_50"
+        app:layout_constraintTop_toBottomOf="@id/topBorder">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/branchHintTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/branch"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/branchTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:text="@string/select_branch"
+            android:textColor="@color/CustomAccentFive"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/branchHintTV" />
+
+        <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+            android:id="@+id/branchSpinner"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:spinnerMode="dialog"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:smsp_alwaysShowFloatingLabel="true"
+            app:smsp_arrowColor="@android:color/transparent"
+            app:smsp_dismissSearchColor="@color/colorAccent"
+            app:smsp_dismissSearchText="@string/close"
+            app:smsp_enableDismissSearch="true"
+            app:smsp_enableFloatingLabel="false"
+            app:smsp_hint="Branches"
+            app:smsp_hintColor="@android:color/transparent"
+            app:smsp_hintSize="@dimen/_11ssp"
+            app:smsp_isSearchable="true"
+            app:smsp_itemColor="@android:color/transparent"
+            app:smsp_itemListColor="@color/CustomAccentFive"
+            app:smsp_itemListHintBackgroundColor="@color/background"
+            app:smsp_itemListHintColor="@color/colorPrimary"
+            app:smsp_multilineError="false"
+            app:smsp_searchHeaderBackgroundColor="@color/colorPrimary"
+            app:smsp_searchHeaderText="@string/select_branch"
+            app:smsp_selectedItemListColor="@color/colorPrimary"
+            app:smsp_underlineColor="@android:color/transparent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/_115sdp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_spinner"
+        app:layout_constraintBottom_toBottomOf="@id/topBorder"
+        android:elevation="10dp"
+        app:layout_constraintStart_toStartOf="@id/guideline_v_50"
+        android:layout_marginStart="@dimen/_8sdp"
+        app:layout_constraintTop_toBottomOf="@id/topBorder">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalEmployeeHintTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/total_employee"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/totalEmployeeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:text="@string/total_employee_demo"
+            android:textColor="@color/CustomAccentFive"
+            android:textSize="@dimen/_10ssp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/totalEmployeeHintTV" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectBranchLayout"
+        tools:listitem="@layout/model_employee" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

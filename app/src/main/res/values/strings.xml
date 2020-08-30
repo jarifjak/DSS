@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Digital Security Solution</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="employee_name">Sree Mukesh Kumar Das</string>
+    <string name="sl">#1</string>
+    <string name="account_number">0044-0310010992</string>
+    <string name="branch_name">Branch Name</string>
+    <string name="branch_name_demo">Chapainababganj-SME</string>
+    <string name="branch_name_hint">Branch Name</string>
+    <string name="bank_code_hint">Bank Code</string>
+    <string name="bank_code">0044</string>
+    <string name="searchHint">Search</string>
+    <string name="select_branch">Select Branch</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+    <string name="total_employee">Total Employee</string>
+    <string name="branch">Branch</string>
+    <string name="total_employee_demo">300</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="add_branch">Add Branch</string>
+    <string name="data_entry">Data Entry</string>
+    <string name="enter_data_heading">Insert new date here!</string>
+    <string name="name">Name</string>
+    <string name="name_hint">Arif Hossain</string>
+    <string name="id">Id</string>
+    <string name="id_hint">47</string>
+    <string name="branch_id">Branch Id</string>
+    <string name="phone">Phone</string>
+    <string name="phone_hint">017XXXXXXXX</string>
+    <string name="account_number_hint">Account Number</string>
+    <string name="insert">Insert</string>
+    <string name="address">Address</string>
+    <string name="address_demo">12/1 Station Road, Dhaka - 1204</string>
+    <string name="part_one">PART I</string>
+    <string name="branchInfo">Branch Info</string>
+    <string name="managerInfo">Managers Info</string>
+    <string name="manager_name_1">First Manager Name</string>
+    <string name="manager_name_2">Second Manager Name</string>
+    <string name="first_manager_name">Manager (1st)</string>
+    <string name="first_manager_num">Manager No. (1st)</string>
+    <string name="second_manager_name">Manager (2nd)</string>
+    <string name="second_manager_num">Manager Phn. (2nd)</string>
+
+    <string name="name_hint_2">Mira Rahman</string>
+    <string name="manager_number_1">First Manager Number</string>
+    <string name="manager_number_2">Second Manager Number</string>
+    <string name="confirm">Confirm</string>
+    <string name="next">Next</string>
+    <string name="employee_info">Employee Info</string>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1014277338354",
+    "firebase_url": "https://digital-security-solution.firebaseio.com",
+    "project_id": "digital-security-solution",
+    "storage_bucket": "digital-security-solution.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1014277338354:android:c39e8b6b07780356300c6b",
+        "android_client_info": {
+          "package_name": "com.jarifjak.digitalsecuritysolution"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1014277338354-j7o2771ovlt2t4rqn923hsnm1thfpjuq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jarifjak.digitalsecuritysolution",
+            "certificate_hash": "d1c9165c0d107ac97cbe92188ad98f8f79c3c3cd"
+          }
+        },
+        {
+          "client_id": "1014277338354-lhhheeop6d9r7hes5s5ivt5hdcr3k648.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7MJBpSNwcNcMqLTJRL2YNFM7vbJUFBos"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1014277338354-lhhheeop6d9r7hes5s5ivt5hdcr3k648.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

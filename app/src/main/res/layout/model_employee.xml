@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_25sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:layout_marginEnd="@dimen/_25sdp"
+    android:layout_marginBottom="@dimen/_5sdp"
+    app:cardCornerRadius="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/employee_card_right_bg"
+        android:baselineAligned="false">
+
+        <RelativeLayout
+            android:id="@+id/leftPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_toStartOf="@id/rightPart"
+            android:background="@drawable/employee_card_left_bg">
+
+            <RelativeLayout
+                android:id="@+id/headingLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/nameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textColor="@color/fontColorBlack"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap"
+                    tools:text="@string/employee_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/accountNumberTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nameTV"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:textColor="@color/CustomAccentFive"
+                    tools:text="@string/account_number" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/serialTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@id/nameTV"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:text="@string/sl"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    tools:ignore="RelativeOverlap" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/horizontalLine"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/headingLayout"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:background="@android:color/darker_gray" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/branchNameHintTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/horizontalLine"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/branch_name_hint" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/branchNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/horizontalLine"
+                android:layout_toEndOf="@id/branchNameHintTV"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/fontColorBlack"
+                android:textStyle="bold"
+                tools:text="@string/branch_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bankCodeHintTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/branchNameHintTV"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_10sdp"
+                android:text="@string/bank_code_hint" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bankCodeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/horizontalLine"
+                android:layout_alignTop="@id/bankCodeHintTV"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_alignStart="@id/branchNameTV"
+                android:textColor="@color/fontColorBlack"
+                android:textStyle="bold"
+                tools:text="@string/bank_code" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/rightPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/callIV"
+                android:layout_width="@dimen/_22sdp"
+                android:layout_height="@dimen/_22sdp"
+                android:background="@drawable/ic_call" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

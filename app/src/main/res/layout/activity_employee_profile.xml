@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.EmployeeProfileActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <View
+            android:id="@+id/topBorder"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_100sdp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idTV"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/bg_circle_stroke"
+            android:gravity="center"
+            android:text="@string/sl"
+            android:textSize="@dimen/_18ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/nameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_22sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/name_hint"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_15ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/idTV"
+            app:layout_constraintTop_toTopOf="@id/idTV" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/numberTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_22sdp"
+            android:text="@string/phone_hint"
+            android:textColor="@color/newThree"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintStart_toEndOf="@id/idTV"
+            app:layout_constraintTop_toBottomOf="@id/nameTV" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/employeeCV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topBorder">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_with_stroke">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_v_50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/accountNumberHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:text="@string/account_number_hint"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_v_50"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/accountNumberTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/account_number"
+                    android:textColor="@color/fontColorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@id/guideline_v_50"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bankCodeHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/bank_code_hint"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toStartOf="@id/accountNumberHintTV"
+                    app:layout_constraintTop_toBottomOf="@id/accountNumberHintTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bankCodeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/bank_code"
+                    android:textColor="@color/fontColorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@id/guideline_v_50"
+                    app:layout_constraintTop_toBottomOf="@id/accountNumberTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/branchHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:text="@string/branch"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/bankCodeHintTV"
+                    app:layout_constraintTop_toBottomOf="@id/bankCodeHintTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/branchTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/branch_name_demo"
+                    android:textColor="@color/fontColorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@id/guideline_v_50"
+                    app:layout_constraintTop_toBottomOf="@id/bankCodeTV" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/managerCV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/employeeCV">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_with_stroke">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline_v_50_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/branchHeadingTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:text="@string/branch_name_demo"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_13ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/firstMNameHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:layout_marginEnd="@dimen/_35sdp"
+                    android:text="@string/first_manager_name"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintEnd_toStartOf="@id/guideline_v_50_2"
+                    app:layout_constraintTop_toTopOf="@id/branchHeadingTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/firstMNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    android:text="@string/name_hint"
+                    android:textColor="@color/fontColorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@id/guideline_v_50_2"
+                    app:layout_constraintTop_toTopOf="@id/branchHeadingTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/firstMNumberHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/first_manager_num"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toStartOf="@id/firstMNameHintTV"
+                    app:layout_constraintTop_toBottomOf="@id/firstMNameHintTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/firstMNumberTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/phone_hint"
+                    android:textColor="@color/fontColorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@id/guideline_v_50_2"
+                    app:layout_constraintTop_toBottomOf="@id/firstMNameTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secondMNameHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/second_manager_name"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toStartOf="@id/firstMNumberHintTV"
+                    app:layout_constraintTop_toBottomOf="@id/firstMNumberHintTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secondMNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/name_hint_2"
+                    android:textColor="@color/fontColorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toEndOf="@id/guideline_v_50_2"
+                    app:layout_constraintTop_toBottomOf="@id/firstMNumberTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secondMNumberHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/second_manager_num"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintStart_toStartOf="@id/secondMNameHintTV"
+                    app:layout_constraintTop_toBottomOf="@id/secondMNameHintTV" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secondMNumberTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_25sdp"
+                    android:text="@string/phone_hint"
+                    android:textColor="@color/fontColorBlack"
+                    android:textSize="@dimen/_11ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/guideline_v_50_2"
+                    app:layout_constraintTop_toBottomOf="@id/secondMNameTV" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/editFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@drawable/ic_edit"
+        tools:ignore="RtlHardcoded" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3E416D</color>
+    <color name="colorPrimaryDark">#2F3152</color>
+    <color name="colorAccent">#4D4D87</color>
+
+    <color name="nav_shape_red">#80F3D9D9</color>
+    <color name="nav_shape_orange">#80E6DBC6</color>
+    <color name="nav_shape_green">#80DCE1CC</color>
+    <color name="nav_shape_purple">#80D9C9E1</color>
+
+    <color name="CustomAccentOne">#DE9C51</color>
+    <color name="CustomAccentTwo">#C97A39</color>
+    <color name="CustomAccentThree">#B0B2BE</color>
+    <color name="CustomAccentFour">#9798A9</color>
+    <color name="CustomAccentFive">#858699</color>
+    <color name="CustomAccentSix">#7A631A</color>
+    <color name="CustomAccentSeven">#E9FCFF</color>
+    <color name="CustomAccentEight">#92E7F4</color>
+    <color name="CustomAccentNine">#E4E4E4</color>
+
+
+    <color name="fontColorBlack">#262A36</color>
+    <color name="fontColorGray">#C5C4D2</color>
+    <color name="sunGlowYellow">#FFCB1D</color>
+    <color name="background">#F2F4FF</color>
+    <color name="background2">#D4D9F8</color>
+    <color name="background3">#EBEEFF</color>
+    <color name="background4">#F2F3F8</color>
+
+    <color name="newThree">#CFCFEA</color>
+    <color name="newFour">#FF2AF598</color>
+    <color name="newOne">#FFB8B8CF</color>
+
+
+    <color name="greenCircle">#44C59A</color>
+    <color name="greenCircleStroke">#CEF7E9</color>
+    <color name="redCircle">#EF2E5B</color>
+    <color name="redCircleStroke">#F4E5ED</color>
+
+
+    <color name="bannerOne">#4A4063</color>
+    <color name="bannerTwo">#F7996E</color>
+    <color name="bannerThree">#5E4C5A</color>
+    <color name="bannerFour">#B6244F</color>
+    <color name="bannerFive">#202C59</color>
+    <color name="bannerSix">#C84630</color>
+    <color name="bannerSeven">#2D728F</color>
+    <color name="bannerEight">#3F2A2B</color>
+
+
+</resources>

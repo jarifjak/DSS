@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".view.activity.InsertActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:background="@color/colorPrimary" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/employeeCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:visibility="visible"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/progressbar"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/employeeHeadingTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:text="@string/employee_info"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/eIdTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/employeeHeadingTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/id"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp"
+                    tools:ignore="RelativeOverlap" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/eIdET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/eIdTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_45sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/id_hint"
+                    android:inputType="number"
+                    android:maxLength="20"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/eIdET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/nameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLine"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/name"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/nameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nameTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/name_hint"
+                    android:inputType="text"
+                    android:maxLength="11"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLineTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/nameET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/phoneTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLineTwo"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/phone"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/phoneET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/phoneTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/phone_hint"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLineThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/phoneET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/accountNumberTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLineThree"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/account_number_hint"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/accountNumberET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/accountNumberTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/account_number"
+                    android:inputType="number"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLineFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/accountNumberET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/branchHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLineFour"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/branch"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/branchTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/branchHintTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_14sdp"
+                    android:background="@android:color/white"
+                    android:enabled="false"
+                    android:text="@string/select_branch"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/_13ssp" />
+
+                <com.chivorn.smartmaterialspinner.SmartMaterialSpinner
+                    android:id="@+id/branchSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@id/branchTV"
+                    android:layout_alignTop="@id/branchTV"
+                    android:layout_alignEnd="@id/branchTV"
+                    android:layout_alignBottom="@id/branchTV"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:spinnerMode="dialog"
+                    android:textAlignment="center"
+                    app:smsp_alwaysShowFloatingLabel="true"
+                    app:smsp_arrowColor="@android:color/transparent"
+                    app:smsp_dismissSearchColor="@color/colorAccent"
+                    app:smsp_dismissSearchText="@string/close"
+                    app:smsp_enableDismissSearch="true"
+                    app:smsp_enableFloatingLabel="false"
+                    app:smsp_hint="Branches"
+                    app:smsp_hintColor="@android:color/transparent"
+                    app:smsp_hintSize="@dimen/_11ssp"
+                    app:smsp_isSearchable="true"
+                    app:smsp_itemColor="@android:color/transparent"
+                    app:smsp_itemListColor="@color/CustomAccentFive"
+                    app:smsp_itemListHintBackgroundColor="@color/background"
+                    app:smsp_itemListHintColor="@color/colorPrimary"
+                    app:smsp_multilineError="false"
+                    app:smsp_searchHeaderBackgroundColor="@color/colorPrimary"
+                    app:smsp_searchHeaderText="@string/select_branch"
+                    app:smsp_selectedItemListColor="@color/colorPrimary"
+                    app:smsp_underlineColor="@android:color/transparent" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/branchOneCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:visibility="gone"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/circleOneIV"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_toStartOf="@id/center"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/colorAccent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/circleTwoIV"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_toEndOf="@id/center"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/CustomAccentFive" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/headingTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/circleOneIV"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/branchInfo"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/center"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerHorizontal="true" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/idBranchTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/headingTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/branch_id"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp"
+                    tools:ignore="RelativeOverlap" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/idBranchET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/idBranchTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_45sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/id_hint"
+                    android:inputType="number"
+                    android:maxLength="20"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLineB"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/idBranchET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/branchNameHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLineB"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/branch_name"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/branchNameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/branchNameHintTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/branch_name_demo"
+                    android:inputType="text"
+                    android:maxLength="11"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLineBTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/branchNameET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/bankCodeHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLineBTwo"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/bank_code_hint"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/bankCodeET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/bankCodeHintTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/bank_code"
+                    android:inputType="number"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLineBThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/bankCodeET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/branchAddressHintTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLineBThree"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/address"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/branchAddressET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/branchAddressHintTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_24sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/address_demo"
+                    android:inputType="text"
+                    android:textSize="@dimen/_13ssp" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/branchTwoCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:layout_marginEnd="@dimen/_25sdp"
+            android:visibility="gone"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/progressbarOfBranch"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mCircleOneIV"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_toStartOf="@id/mCenter"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/CustomAccentFive" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mCircleTwoIV"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_toEndOf="@id/mCenter"
+                    android:background="@drawable/bg_circle" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/mHeadingTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mCircleOneIV"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/managerInfo"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_17ssp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/mCenter"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerHorizontal="true" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/firstMNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/mHeadingTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/manager_name_1"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp"
+                    tools:ignore="RelativeOverlap" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/firstMNameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/firstMNameTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/name_hint"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLineM"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/firstMNameET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/firstMNumberTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLineM"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/manager_number_1"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/firstMNumberET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/firstMNumberTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/phone_hint"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLineMTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/firstMNumberET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secondMNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLineMTwo"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/manager_name_2"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/secondMNameET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/secondMNameTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/name_hint_2"
+                    android:inputType="text"
+                    android:textSize="@dimen/_13ssp" />
+
+                <View
+                    android:id="@+id/horizontalLineMThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@id/secondMNameET"
+                    android:background="@color/fontColorGray" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/secondMNumberTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/horizontalLineMThree"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:text="@string/manager_number_2"
+                    android:textColor="@color/CustomAccentFive"
+                    android:textSize="@dimen/_11ssp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/secondMNumberET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/secondMNumberTV"
+                    android:layout_marginStart="@dimen/_13sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_24sdp"
+                    android:background="@android:color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/phone_hint"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textSize="@dimen/_13ssp" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/insertBTN"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/employeeCV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:background="@drawable/button_ripple_bg"
+            android:text="@string/insert"
+            android:textColor="@android:color/white"
+            android:visibility="visible"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/nextBTN"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/branchOneCV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:background="@drawable/button_ripple_bg"
+            android:text="@string/next"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/confirmBTN"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/branchTwoCV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:background="@drawable/button_ripple_bg"
+            android:text="@string/confirm"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            tools:ignore="UnusedAttribute" />
+
+    </RelativeLayout>
+
+</ScrollView>
