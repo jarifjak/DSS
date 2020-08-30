@@ -85,8 +85,9 @@ public class InsertActivity extends AppCompatActivity {
 
     private static int activityType;
     private static int id;
+    private String key;                    //store for updating
     private List<String> branchNames;
-    private Branch branch;
+    private static Branch branch;
     private boolean busy;
 
 
@@ -179,6 +180,7 @@ public class InsertActivity extends AppCompatActivity {
                         return;
                     }
 
+                    key = employee.getKey();
 
                     viewModel.getBranchByName(employee.getBranchName()).observe(InsertActivity.this, new Observer<Branch>() {
 
@@ -220,6 +222,19 @@ public class InsertActivity extends AppCompatActivity {
 
                 }
             });
+
+        } else if (activityType == 5) {
+
+            viewModel.getBranchById(id).observe(this, new Observer<Branch>() {
+
+                @Override
+                public void onChanged(Branch branch) {
+
+                    key = branch.getKey();
+
+                    setBranchInfo(branch);
+                }
+            });
         }
 
         setViewVisibility(activityType);
@@ -257,6 +272,18 @@ public class InsertActivity extends AppCompatActivity {
             employeeCV.setVisibility(View.VISIBLE);
             insertBTN.setText("UPDATE");
             insertBTN.setVisibility(View.VISIBLE);
+
+        } else if (viewType == 5) {
+
+            employeeCV.setVisibility(View.GONE);
+            insertBTN.setVisibility(View.GONE);
+
+            branchTwoCV.setVisibility(View.GONE);
+            confirmBTN.setVisibility(View.GONE);
+
+            branchOneCV.setVisibility(View.VISIBLE);
+            nextBTN.setVisibility(View.VISIBLE);
+            confirmBTN.setText("UPDATE");
         }
     }
 
@@ -288,7 +315,7 @@ public class InsertActivity extends AppCompatActivity {
         });
     }
 
-    private void insertEmployee() {
+    private void insertOrUpdateEmployee() {
 
         if (busy) {
 
@@ -338,7 +365,7 @@ public class InsertActivity extends AppCompatActivity {
 
         Employee employee = new Employee(Integer.parseInt(id), name, accountNumber, branch.getBankCode(), branch.getName(), phone);
 
-        viewModel.insertEmployee(employee).observe(this, new Observer<Boolean>() {
+        Observer<Boolean> observer = new Observer<Boolean>() {
 
             @Override
             public void onChanged(Boolean aBoolean) {
@@ -347,9 +374,24 @@ public class InsertActivity extends AppCompatActivity {
 
                 Toast.makeText(InsertActivity.this, aBoolean ? "Successful" : "Failed", Toast.LENGTH_SHORT).show();
                 busy = false;
-            }
 
-        });
+                if (activityType == 4) {
+
+                    finish();
+                }
+            }
+        };
+
+        if (activityType == 1) {
+
+            viewModel.insertEmployee(employee).observe(this, observer);
+
+        } else if (activityType == 4) {
+
+            employee.setKey(key);
+
+            viewModel.updateEmployee(employee).observe(this, observer);
+        }
     }
 
     private boolean isFirstPageCorrect() {
@@ -428,7 +470,7 @@ public class InsertActivity extends AppCompatActivity {
         return true;
     }
 
-    private void insertBranch() {
+    private void insertOrUpdateBranch() {
 
         if (busy) {
 
@@ -454,7 +496,7 @@ public class InsertActivity extends AppCompatActivity {
             return;
         }
 
-        viewModel.insertBranch(branch).observe(this, new Observer<Boolean>() {
+        Observer<Boolean> observer = new Observer<Boolean>() {
 
             @Override
             public void onChanged(Boolean aBoolean) {
@@ -463,9 +505,24 @@ public class InsertActivity extends AppCompatActivity {
                 Toast.makeText(InsertActivity.this, aBoolean ? "Successful" : "Failed", Toast.LENGTH_SHORT).show();
 
                 busy = false;
-            }
 
-        });
+                if (activityType == 5) {
+
+                    finish();
+                }
+            }
+        };
+
+        if (activityType == 2) {
+
+            viewModel.insertBranch(branch).observe(this, observer);
+
+        } else if (activityType == 5) {
+
+            branch.setKey(key);
+            viewModel.updateBranch(branch).observe(this, observer);
+
+        }
     }
 
     private void setEmployeeInfo(Employee employee) {
@@ -475,6 +532,20 @@ public class InsertActivity extends AppCompatActivity {
         phoneET.setText(employee.getNumber());
         accountNumberET.setText(employee.getAccountNumber());
         branchTV.setText(branch.getName());
+    }
+
+    private void setBranchInfo(Branch branch) {
+
+        idBranchET.setText(branch.getId());
+        branchNameET.setText(branch.getName());
+        bankCodeET.setText(branch.getBankCode());
+        branchAddressET.setText(branch.getAddress());
+
+        firstMNameET.setText(branch.getFirstManagerName());
+        firstMNumberET.setText(branch.getFirstManagerNumber());
+        secondMNameET.setText(branch.getSecondManagerName());
+        secondMNumberET.setText(branch.getSecondManagerNumber());
+
     }
 
 
@@ -494,7 +565,7 @@ public class InsertActivity extends AppCompatActivity {
         } else if (id == R.id.insertBTN) {
 
             progressbar.setVisibility(View.VISIBLE);
-            insertEmployee();
+            insertOrUpdateEmployee();
 
         } else if (id == R.id.nextBTN) {
 
@@ -503,7 +574,7 @@ public class InsertActivity extends AppCompatActivity {
         } else if (id == R.id.confirmBTN) {
 
             progressbarOfBranch.setVisibility(View.VISIBLE);
-            insertBranch();
+            insertOrUpdateBranch();
 
         }
     }

@@ -41,6 +41,11 @@ public class InsertViewModel extends AndroidViewModel {
         return repository.getBranches();
     }
 
+    public LiveData<Branch> getBranchById(int id) {
+
+        return repository.getBranchById(id);
+    }
+
     public LiveData<Branch> getBranchByName(String branchName) {
 
         return repository.getBranchByName(branchName);
@@ -66,7 +71,37 @@ public class InsertViewModel extends AndroidViewModel {
         return isSuccessful;
     }
 
+    public LiveData<Boolean> updateEmployee(Employee employee) {
+
+        repository.updateEmployee(employee, new FirebaseListener() {
+
+            @Override
+            public void onOperationComplete(boolean successStatus) {
+
+                isSuccessful.setValue(successStatus);
+
+            }
+        });
+
+        return isSuccessful;
+    }
+
     public LiveData<Boolean> insertBranch(Branch branch) {
+
+        repository.insertBranch(branch, new FirebaseListener() {
+
+            @Override
+            public void onOperationComplete(boolean successStatus) {
+
+                isSuccessful.setValue(successStatus);
+
+            }
+        });
+
+        return isSuccessful;
+    }
+
+    public LiveData<Boolean> updateBranch(Branch branch) {
 
         repository.insertBranch(branch, new FirebaseListener() {
 

@@ -112,7 +112,6 @@
                     android:focusableInTouchMode="true"
                     android:hint="@string/name_hint"
                     android:inputType="text"
-                    android:maxLength="11"
                     android:textSize="@dimen/_13ssp" />
 
                 <View

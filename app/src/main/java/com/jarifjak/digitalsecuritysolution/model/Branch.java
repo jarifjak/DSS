@@ -17,6 +17,10 @@ public class Branch {
     @PrimaryKey(autoGenerate = false)
     private int id;
 
+    @SerializedName("key")
+    @Expose
+    private String key;
+
     @SerializedName("address")
     @Expose
     private String address;
@@ -62,6 +66,14 @@ public class Branch {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getName() {

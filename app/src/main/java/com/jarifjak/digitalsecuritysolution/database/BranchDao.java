@@ -32,4 +32,9 @@ public interface BranchDao {
     @Query("SELECT * FROM branch_table WHERE name LIKE :branchName")
     LiveData<Branch> getBranchByName(String branchName);
 
+    @Query("SELECT * FROM branch_table WHERE id = :id")
+    LiveData<Branch> getBranchById(int id);
+
+
+
 }

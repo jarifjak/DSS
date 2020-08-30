@@ -55,6 +55,11 @@ public class InsertRepository {
         return branchDao.getBranches();
     }
 
+    public LiveData<Branch> getBranchById(int id) {
+
+        return branchDao.getBranchById(id);
+    }
+
     public LiveData<Integer> getMaxIdOfBranch() {
 
         return branchDao.getMaxId();
@@ -89,7 +94,26 @@ public class InsertRepository {
             return;
         }
 
+        employee.setKey(key);
+
         reference.child(key).setValue(employee).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                listener.onOperationComplete(task.isSuccessful());
+
+            }
+        });
+    }
+
+    public void updateEmployee(Employee employee, FirebaseListener listener) {
+
+        this.listener = listener;
+
+        reference = FirebaseDatabase.getInstance().getReference().child("Employees");
+
+        reference.child(employee.getKey()).setValue(employee).addOnCompleteListener(new OnCompleteListener<Void>() {
 
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -114,7 +138,27 @@ public class InsertRepository {
             return;
         }
 
+        branch.setKey(key);
+
         reference.child(key).setValue(branch).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                listener.onOperationComplete(task.isSuccessful());
+
+            }
+        });
+
+    }
+
+    public void updateBranch(Branch branch, FirebaseListener listener) {
+
+        this.listener = listener;
+
+        reference = FirebaseDatabase.getInstance().getReference().child("Branches");
+
+        reference.child(branch.getKey()).setValue(branch).addOnCompleteListener(new OnCompleteListener<Void>() {
 
             @Override
             public void onComplete(@NonNull Task<Void> task) {
