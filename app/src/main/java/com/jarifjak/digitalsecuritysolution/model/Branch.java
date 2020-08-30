@@ -3,6 +3,7 @@ package com.jarifjak.digitalsecuritysolution.model;
 import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -48,6 +49,9 @@ public class Branch {
     @SerializedName("secondManagerNumber")
     @Expose
     private String secondManagerNumber;
+
+    @Ignore
+    private boolean isExtended = false;
 
     public Branch() {
     }
@@ -132,5 +136,11 @@ public class Branch {
         this.secondManagerNumber = secondManagerNumber;
     }
 
+    public boolean isExtended() {
+        return isExtended;
+    }
 
+    public void setExtended(boolean extended) {
+        isExtended = extended;
+    }
 }

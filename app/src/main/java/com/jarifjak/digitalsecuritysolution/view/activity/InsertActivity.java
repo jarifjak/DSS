@@ -2,6 +2,7 @@ package com.jarifjak.digitalsecuritysolution.view.activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +31,7 @@ import com.jarifjak.digitalsecuritysolution.model.Branch;
 import com.jarifjak.digitalsecuritysolution.model.DialogExtra;
 import com.jarifjak.digitalsecuritysolution.model.Employee;
 import com.jarifjak.digitalsecuritysolution.utility.Constants;
+import com.jarifjak.digitalsecuritysolution.view.fragment.BranchFragment;
 import com.jarifjak.digitalsecuritysolution.viewmodel.InsertViewModel;
 
 import java.util.ArrayList;
@@ -62,7 +64,6 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
     CardView branchOneCV;
     @BindView(R.id.branchTwoCV)
     CardView branchTwoCV;
-
 
     @BindView(R.id.idBranchET)
     AppCompatEditText idBranchET;
@@ -99,11 +100,11 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
     @BindView(R.id.branchTwoButtonLayout)
     LinearLayout branchTwoButtonLayout;
 
-    private InsertViewModel viewModel;
 
+    private InsertViewModel viewModel;
     private static int activityType;
     private static int id;
-    private String key;                    //store for updating
+    private String key;                                                         //store for updating
     private List<String> branchNames;
     private static Branch branch;
     private DialogFragment dialog;
@@ -252,7 +253,14 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
                 @Override
                 public void onChanged(Branch branch) {
 
+                    if (branch == null) {
+
+                        return;
+                    }
+
                     key = branch.getKey();
+
+                    Log.d("TAG", "\n\nonChanged: " + key);
 
                     setBranchInfo(branch);
                 }
@@ -272,7 +280,10 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
             employeeCV.setVisibility(View.VISIBLE);
             employeeButtonLayout.setVisibility(View.VISIBLE);
 
-            deleteEmployeeBTN.setVisibility(View.GONE);
+            if (activityType == 1) {
+
+                deleteEmployeeBTN.setVisibility(View.GONE);
+            }
 
         } else if (viewType == 2) {
 
@@ -286,7 +297,11 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
             branchOneCV.setVisibility(View.VISIBLE);
             branchOneButtonLayout.setVisibility(View.VISIBLE);
-            deleteBranchBTN.setVisibility(View.GONE);
+
+            if (activityType == 2) {
+
+                deleteBranchBTN.setVisibility(View.GONE);
+            }
 
         } else if (viewType == 3) {
 
@@ -532,9 +547,9 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
         }
 
         branch.setFirstManagerName(firstManagerName);
-        branch.setFirstManagerName(firstManagerNumber);
+        branch.setFirstManagerNumber(firstManagerNumber);
         branch.setSecondManagerName(secondManagerName);
-        branch.setFirstManagerName(secondManagerNumber);
+        branch.setSecondManagerNumber(secondManagerNumber);
 
         return true;
     }
@@ -612,7 +627,6 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
                 }
 
                 Toast.makeText(InsertActivity.this, aBoolean ? "Successful" : "Failed", Toast.LENGTH_SHORT).show();
-
                 finish();
             }
         });
@@ -629,7 +643,7 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
     private void setBranchInfo(Branch branch) {
 
-        idBranchET.setText(branch.getId());
+        idBranchET.setText(String.valueOf(branch.getId()));
         branchNameET.setText(branch.getName());
         bankCodeET.setText(branch.getBankCode());
         branchAddressET.setText(branch.getAddress());
@@ -714,7 +728,7 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
         } else if (id == R.id.deleteBranchBTN) {
 
-            deleteBranch();
+            showCustomDialog(4);
         }
     }
 
@@ -734,13 +748,15 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
     @Override
     public void onConfirmClick(int flag) {
 
-        if (flag == 4) {
+        if (flag == 4 && activityType == 4) {
 
             deleteEmployee();
 
-        } else if (flag == 5) {
+        } else if (flag == 4 && activityType == 5) {
 
             deleteBranch();
         }
     }
+
+
 }

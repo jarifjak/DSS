@@ -118,7 +118,7 @@ public class InsertViewModel extends AndroidViewModel {
 
     public LiveData<Boolean> updateBranch(Branch branch) {
 
-        repository.insertBranch(branch, new FirebaseListener() {
+        repository.updateBranch(branch, new FirebaseListener() {
 
             @Override
             public void onOperationComplete(boolean successStatus) {

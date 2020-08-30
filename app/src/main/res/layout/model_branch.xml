@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/_25sdp"
+    android:layout_marginTop="@dimen/_7sdp"
+    android:layout_marginEnd="@dimen/_25sdp"
+    android:layout_marginBottom="@dimen/_7sdp"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/cardMainContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_with_stroke">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/nameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/fontColorBlack"
+                android:textSize="@dimen/_13ssp"
+                tools:text="@string/branch_name_demo" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/decorationIV"
+                android:layout_width="@dimen/_7sdp"
+                android:layout_height="@dimen/_7sdp"
+                android:layout_below="@id/nameTV"
+                android:layout_marginStart="@dimen/_25sdp"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="@color/sunGlowYellow" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/addressTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameTV"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_toEndOf="@id/decorationIV"
+                android:text="@string/address_demo"
+                android:textColor="@color/CustomAccentFive"
+                android:textSize="@dimen/_10ssp" />
+
+            <View
+                android:id="@+id/verticalLine"
+                android:layout_width="0.5dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_toStartOf="@id/editIV"
+                android:background="@color/CustomAccentFive" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/editIV"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/ic_edit"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/extendedLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardMainContent"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/firstMNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:text="@string/name_hint"
+                android:textColor="@color/CustomAccentFive"
+                android:textSize="@dimen/_11ssp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@id/firstMNumberTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:layout_toEndOf="@id/firstMNameTV"
+                android:text="@string/phone_hint"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_11ssp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/secondMNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/firstMNameTV"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="@string/name_hint_2"
+                android:textColor="@color/CustomAccentFive"
+                android:textSize="@dimen/_11ssp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/secondMNumberTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/firstMNumberTV"
+                android:layout_marginStart="@dimen/_35sdp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_toEndOf="@id/firstMNameTV"
+                android:text="@string/phone_hint"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_11ssp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

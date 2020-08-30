@@ -15,6 +15,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.jarifjak.digitalsecuritysolution.R;
 import com.jarifjak.digitalsecuritysolution.listener.FragmentListener;
 import com.jarifjak.digitalsecuritysolution.utility.SharedPrefs;
+import com.jarifjak.digitalsecuritysolution.view.fragment.BranchFragment;
 import com.jarifjak.digitalsecuritysolution.view.fragment.HomeFragment;
 import com.jarifjak.digitalsecuritysolution.view.fragment.OthersFragment;
 import com.jarifjak.digitalsecuritysolution.viewmodel.MainViewModel;
@@ -52,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
 
         } else if (position == 1) {
 
+            fragment = BranchFragment.newInstance();
+
+        } else if (position == 2) {
+
             fragment = OthersFragment.newInstance();
 
         }
@@ -66,10 +71,12 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
         loadFragment(0);
 
         AHBottomNavigationItem item1 = new AHBottomNavigationItem("Home", R.drawable.ic_home);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem("Others", R.drawable.ic_others);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem("Branch", R.drawable.ic_branch_nav);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem("Others", R.drawable.ic_others);
 
         bottomNavigation.addItem(item1);
         bottomNavigation.addItem(item2);
+        bottomNavigation.addItem(item3);
 
         bottomNavigation.setOnTabSelectedListener(this);
 
