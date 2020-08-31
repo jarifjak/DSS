@@ -32,7 +32,7 @@ public class MainViewModel extends AndroidViewModel {
 
     public void insertEmployeeInRoom(List<Employee> employees) {
 
-        repository.insertEmployeeInRoom(employees);
+        repository.insertEmployeesInRoom(employees);
     }
 
     public void deleteAllEmployees() {

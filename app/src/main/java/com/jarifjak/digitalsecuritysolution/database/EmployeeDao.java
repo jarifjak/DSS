@@ -2,6 +2,7 @@ package com.jarifjak.digitalsecuritysolution.database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -17,8 +18,14 @@ public interface EmployeeDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertEmployees(List<Employee> employees);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertEmployee(Employee employee);
+
     @Update
     void update(Employee employee);
+
+    @Delete
+    void delete(Employee employee);
 
     @Query("DELETE FROM employee_table")
     void deleteAllEmployees();

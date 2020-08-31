@@ -5,8 +5,10 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -61,7 +63,8 @@ public class MainRepository {
         employees = new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference();
-        reference.child("Employees").addValueEventListener(employeeListener);
+        //reference.child("Employees").addValueEventListener(employeeListener);
+        reference.child("Employees").addChildEventListener(employeeChildListener);
     }
 
     public void listenForBranches() {
@@ -88,9 +91,25 @@ public class MainRepository {
         return employeeDao.getEmployeesByAll(search, selectedBranch);
     }
 
-    public void insertEmployeeInRoom(List<Employee> list) {
+    public void insertEmployeesInRoom(List<Employee> list) {
 
         new InsertEmployeeAT(employeeDao).execute(list);
+    }
+
+    public void insertEmployeeInRoom(Employee employee) {
+
+        new InsertOneEmployeeAT(employeeDao).execute(employee);
+    }
+
+    public void updateEmployee(Employee employee) {
+
+        new UpdateEmployeeAt(employeeDao).execute(employee);
+    }
+
+
+    public void deleteEmployee(Employee employee) {
+
+        employeeDao.delete(employee);
     }
 
     public void deleteAllEmployees() {
@@ -128,7 +147,7 @@ public class MainRepository {
             }
 
             deleteAllEmployees();
-            insertEmployeeInRoom(employees);
+            insertEmployeesInRoom(employees);
 
         }
 
@@ -138,6 +157,42 @@ public class MainRepository {
             Log.d("EmployeeListenerFailed", "onCancelled: " + error.getMessage());
         }
 
+    };
+
+
+    ChildEventListener employeeChildListener = new ChildEventListener() {
+
+        @Override
+        public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            Employee employee = snapshot.getValue(Employee.class);
+            repository.insertEmployeeInRoom(employee);
+        }
+
+        @Override
+        public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            Employee employee = snapshot.getValue(Employee.class);
+            repository.updateEmployee(employee);
+
+        }
+
+        @Override
+        public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            Employee employee = snapshot.getValue(Employee.class);
+            repository.deleteEmployee(employee);
+        }
+
+        @Override
+        public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError error) {
+
+        }
     };
 
     ValueEventListener branchListener = new ValueEventListener() {
@@ -180,6 +235,10 @@ public class MainRepository {
         @Override
         protected final Void doInBackground(List<Employee>... lists) {
 
+            if (lists == null) {
+
+                return null;
+            }
 
             if (lists[0] == null || lists[0].size() == 0) {
 
@@ -188,6 +247,42 @@ public class MainRepository {
 
             employeeDao.insertEmployees(lists[0]);
 
+            return null;
+        }
+    }
+
+    public static class InsertOneEmployeeAT extends AsyncTask<Employee, Void, Void> {
+
+        private EmployeeDao employeeDao;
+
+        public InsertOneEmployeeAT(EmployeeDao employeeDao) {
+
+            this.employeeDao = employeeDao;
+        }
+
+
+        @Override
+        protected Void doInBackground(Employee... employees) {
+
+            employeeDao.insertEmployee(employees[0]);
+            return null;
+        }
+    }
+
+    public static class UpdateEmployeeAt extends AsyncTask<Employee, Void, Void> {
+
+        private EmployeeDao employeeDao;
+
+        public UpdateEmployeeAt(EmployeeDao employeeDao) {
+
+            this.employeeDao = employeeDao;
+        }
+
+
+        @Override
+        protected Void doInBackground(Employee... employees) {
+
+            employeeDao.update(employees[0]);
             return null;
         }
     }
