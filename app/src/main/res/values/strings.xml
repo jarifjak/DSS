@@ -52,4 +52,16 @@
     <string name="back">Back</string>
     <string name="fail">Fail</string>
     <string name="okay">Okay</string>
+    <string name="about_app">About</string>
+    <string name="version_demo">Version 1.0</string>
+    <string name="developer_info">Developer Info</string>
+    <string name="logout">Logout</string>
+    <string name="exit">Exit</string>
+    <string name="others">Others</string>
+    <string name="details">Details</string>
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
+
 </resources>

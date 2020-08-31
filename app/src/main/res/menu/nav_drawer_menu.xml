@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/details">
+        <menu>
+
+            <item
+                android:id="@+id/nav_about_app"
+                android:icon="@drawable/ic_about"
+                android:title="@string/about_app" />
+
+            <item
+                android:id="@+id/nav_developer_info"
+                android:icon="@drawable/ic_developer_info"
+                android:title="@string/developer_info" />
+
+        </menu>
+    </item>
+
+    <item android:title="@string/others">
+        <menu>
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/logout" />
+
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_exit"
+                android:title="@string/exit" />
+
+        </menu>
+    </item>
+
+
+</menu>
