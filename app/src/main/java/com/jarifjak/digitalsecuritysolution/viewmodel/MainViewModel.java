@@ -45,9 +45,9 @@ public class MainViewModel extends AndroidViewModel {
         return repository.getBranchFromRoom();
     }
 
-    public void insertBranchInRoom(List<Branch> branches) {
+    public void insertBranchesInRoom(List<Branch> branches) {
 
-        repository.insertBranchInRoom(branches);
+        repository.insertBranchesInRoom(branches);
     }
 
     public void deleteAllBranches() {

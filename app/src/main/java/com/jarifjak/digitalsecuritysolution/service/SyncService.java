@@ -18,7 +18,6 @@ public class SyncService extends JobIntentService {
         enqueueWork(context, SyncService.class, 123, work);
     }
 
-
     @Override
     protected void onHandleWork(@NonNull Intent intent) {
 
