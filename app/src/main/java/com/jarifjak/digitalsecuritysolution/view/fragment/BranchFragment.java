@@ -101,11 +101,11 @@ public class BranchFragment extends Fragment implements BranchAdapter.MyListener
     }
 
     @Override
-    public void onEditClick(int id) {
+    public void onEditClick(String key) {
 
         Intent intent = new Intent(getActivity(), InsertActivity.class);
         intent.putExtra(Constants.ACTIVITY_TYPE, 5);
-        intent.putExtra(Constants.ID, id);
+        intent.putExtra(Constants.KEY, key);
 
         startActivity(intent);
     }

@@ -35,9 +35,9 @@ public class EmployeeProfileRepository {
         branchDao = database.branchDao();
     }
 
-    public LiveData<Employee> getEmployeeById(int id) {
+    public LiveData<Employee> getEmployeeByKey(String key) {
 
-        return employeeDao.getEmployeeById(id);
+        return employeeDao.getEmployeeByKey(key);
     }
 
     public LiveData<Branch> getBranchByName(String branchName) {

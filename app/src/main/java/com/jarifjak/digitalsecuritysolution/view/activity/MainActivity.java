@@ -1,5 +1,6 @@
 package com.jarifjak.digitalsecuritysolution.view.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,23 +13,31 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 import com.jarifjak.digitalsecuritysolution.R;
+import com.jarifjak.digitalsecuritysolution.dialog.CustomDialog;
 import com.jarifjak.digitalsecuritysolution.listener.FragmentListener;
+import com.jarifjak.digitalsecuritysolution.model.DialogExtra;
+import com.jarifjak.digitalsecuritysolution.utility.Constants;
 import com.jarifjak.digitalsecuritysolution.utility.SharedPrefs;
 import com.jarifjak.digitalsecuritysolution.view.fragment.BranchFragment;
 import com.jarifjak.digitalsecuritysolution.view.fragment.HomeFragment;
 import com.jarifjak.digitalsecuritysolution.view.fragment.OthersFragment;
+import com.jarifjak.digitalsecuritysolution.viewmodel.MainViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements FragmentListener, AHBottomNavigation.OnTabSelectedListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements FragmentListener, AHBottomNavigation.OnTabSelectedListener, NavigationView.OnNavigationItemSelectedListener,
+        CustomDialog.DialogListener {
 
     @BindView(R.id.bottom_navigation)
     AHBottomNavigation bottomNavigation;
@@ -41,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
 
     private boolean doubleBackPressed = false;
     private SharedPrefs prefs;
+    private DialogFragment dialog;
+    private MainViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
         ButterKnife.bind(this);
 
         setupDrawerAndToolbar();
+
+        dialog = new DialogFragment();  // for avoiding null exception
 
         initialize();
     }
@@ -108,6 +121,36 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
         bottomNavigation.setInactiveColor(Color.parseColor("#858699"));
     }
 
+    private void showCustomDialog(int dialogType, DialogExtra dialogExtra) {
+
+        if (dialog.isVisible()) {
+
+            return;
+        }
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment prevFragment = getSupportFragmentManager().findFragmentByTag(Constants.DIALOG_TAG);
+
+        if (prevFragment != null) {
+
+            ft.remove(prevFragment);
+        }
+
+        ft.addToBackStack(null);
+
+        if (dialogType == Constants.DIALOG_ONE_BUTTON) {
+
+            dialog = CustomDialog.newInstance(Constants.DIALOG_ONE_BUTTON, 3, new Gson().toJson(dialogExtra));
+
+        } else {
+
+            dialog = CustomDialog.newInstance(Constants.DIALOG_TWO_BUTTON, dialogExtra.getTitle().equals("Exit") ? 5 : 3, new Gson().toJson(dialogExtra));
+
+        }
+
+        dialog.show(ft, Constants.DIALOG_TAG);
+    }
+
     @Override
     public void onBackPressed() {
 
@@ -152,23 +195,46 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
 
         if (item.getItemId() == R.id.nav_about_app) {
 
-            Toast.makeText(this, "About", Toast.LENGTH_SHORT).show();
+            showCustomDialog(Constants.DIALOG_ONE_BUTTON, new DialogExtra("About", "This Application is created for maintaining " +
+                                                                                                    "employee data and influence better control over them"));
 
         } else if (item.getItemId() == R.id.nav_developer_info) {
 
-            Toast.makeText(this, "Developer Info", Toast.LENGTH_SHORT).show();
+            showCustomDialog(Constants.DIALOG_ONE_BUTTON, new DialogExtra("Developer Info","This Application is developed by\n\nJarif Alam Khan\n" +
+                                                                                                            "Software Engineer\n\n" +
+                                                                                                             "Email : jarifjak@gmail.com"));
 
-        }  else if (item.getItemId() == R.id.nav_logout) {
+        } else if (item.getItemId() == R.id.nav_logout) {
 
-            Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
+            showCustomDialog(Constants.DIALOG_TWO_BUTTON, new DialogExtra("Logout", "Do you want to logout?"));
 
-        }   else if (item.getItemId() == R.id.nav_exit) {
+        } else if (item.getItemId() == R.id.nav_exit) {
 
-            Toast.makeText(this, "Exit", Toast.LENGTH_SHORT).show();
+            showCustomDialog(Constants.DIALOG_TWO_BUTTON, new DialogExtra("Exit", "Do you want to exit?"));
 
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onConfirmClick(int flag) {
+
+        if (flag == 3) {
+
+            viewModel = new ViewModelProvider(MainActivity.this).get(MainViewModel.class);
+
+            viewModel.deleteAllEmployees();
+            viewModel.deleteAllBranches();
+            prefs.setLoggedIn(false);
+
+            finishAffinity();
+            startActivity(new Intent(MainActivity.this, StartingActivity.class));
+
+        } else if (flag == 5) {
+
+            finishAndRemoveTask();
+        }
     }
 }

@@ -9,7 +9,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.jarifjak.digitalsecuritysolution.model.Branch;
-import com.jarifjak.digitalsecuritysolution.model.Employee;
 
 import java.util.List;
 
@@ -31,7 +30,7 @@ public interface BranchDao {
     @Query("DELETE FROM branch_table")
     void deleteAllBranches();
 
-    @Query("SELECT * FROM branch_table")
+    @Query("SELECT * FROM branch_table ORDER BY id")
     LiveData<List<Branch>> getBranches();
 
     @Query("SELECT MAX(id) FROM branch_table")
@@ -42,6 +41,9 @@ public interface BranchDao {
 
     @Query("SELECT * FROM branch_table WHERE id = :id")
     LiveData<Branch> getBranchById(int id);
+
+    @Query("SELECT * FROM branch_table WHERE `key` = :key")
+    LiveData<Branch> getBranchByKey(String key);
 
 
 

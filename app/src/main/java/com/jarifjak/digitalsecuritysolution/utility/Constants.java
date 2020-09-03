@@ -8,6 +8,8 @@ public interface Constants {
 
     String EMPLOYEE_ID = "employeeId";
     String ID = "id";
+    String KEY = "key";
+
 
     int DIALOG_TWO_BUTTON = 2;
     int DIALOG_ONE_BUTTON = 1;

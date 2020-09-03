@@ -41,9 +41,9 @@ public class InsertViewModel extends AndroidViewModel {
         return repository.getBranches();
     }
 
-    public LiveData<Branch> getBranchById(int id) {
+    public LiveData<Branch> getBranchByKey(String key) {
 
-        return repository.getBranchById(id);
+        return repository.getBranchByKey(key);
     }
 
     public LiveData<Branch> getBranchByName(String branchName) {
@@ -51,9 +51,9 @@ public class InsertViewModel extends AndroidViewModel {
         return repository.getBranchByName(branchName);
     }
 
-    public LiveData<Employee> getEmployeeById(int id) {
+    public LiveData<Employee> getEmployeeByKey(String key) {
 
-        return repository.getEmployeeById(id);
+        return repository.getEmployeeByKey(key);
     }
 
     public LiveData<Boolean> insertEmployee(Employee employee) {

@@ -52,9 +52,10 @@ public class InsertRepository {
         return branchDao.getBranches();
     }
 
-    public LiveData<Branch> getBranchById(int id) {
 
-        return branchDao.getBranchById(id);
+    public LiveData<Branch> getBranchByKey(String key) {
+
+        return branchDao.getBranchByKey(key);
     }
 
     public LiveData<Integer> getMaxIdOfBranch() {
@@ -72,9 +73,9 @@ public class InsertRepository {
         return branchDao.getBranchByName(branchName);
     }
 
-    public LiveData<Employee> getEmployeeById(int id) {
+    public LiveData<Employee> getEmployeeByKey(String key) {
 
-        return employeeDao.getEmployeeById(id);
+        return employeeDao.getEmployeeByKey(key);
     }
 
     public void insertEmployee(Employee employee, FirebaseListener listener) {

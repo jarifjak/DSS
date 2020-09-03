@@ -88,11 +88,11 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
             switch (view.getId()) {
 
                 case R.id.callIV:
-                    listener.onCallClick(employees.get(getAbsoluteAdapterPosition()).getId());
+                    listener.onCallClick(employees.get(getAbsoluteAdapterPosition()).getNumber());
                     break;
 
                 case R.id.cardRoot:
-                    listener.onCardClick(employees.get(getAbsoluteAdapterPosition()).getId());
+                    listener.onCardClick(employees.get(getAbsoluteAdapterPosition()).getKey());
                     break;
             }
         }
@@ -100,7 +100,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.ViewHo
 
     public interface MyListener {
 
-        void onCardClick(int id);
-        void onCallClick(int id);
+        void onCardClick(String key);
+        void onCallClick(String number);
     }
 }

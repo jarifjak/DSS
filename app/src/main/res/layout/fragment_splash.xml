@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".view.fragment.SplashFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appIconIV"
+            android:layout_marginTop="@dimen/_95sdp"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ic_app_icon" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appNameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appIconIV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@string/app_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/versionTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appNameTV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@string/version_demo_short"
+        android:textColor="@color/CustomAccentFive"
+        android:textSize="@dimen/_11ssp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:text="@string/developedBy"
+        android:textColor="@color/CustomAccentFive"
+        android:textSize="@dimen/_11ssp" />
+
+
+</RelativeLayout>

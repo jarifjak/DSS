@@ -21,9 +21,9 @@ public class EmployeeProfileViewModel extends AndroidViewModel {
 
     }
 
-    public LiveData<Employee> getEmployeeById(int id) {
+    public LiveData<Employee> getEmployeeByKey(String key) {
 
-        return repository.getEmployeeById(id);
+        return repository.getEmployeeByKey(key);
     }
 
     public LiveData<Branch> getBranchByName(String branchName) {

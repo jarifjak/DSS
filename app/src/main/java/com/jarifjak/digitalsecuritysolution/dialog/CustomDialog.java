@@ -101,6 +101,11 @@ public class CustomDialog extends DialogFragment {
             twoButtonLayout.setVisibility(View.GONE);
             circleIV.setImageResource(alertFlag == 1 ? R.drawable.ic_success : R.drawable.ic_error);
 
+            if (alertFlag == 3) { // added later, kind of hard coded
+
+                circleIV.setImageResource(R.drawable.ic_app_icon);
+            }
+
         } else if (dialogType == Constants.DIALOG_TWO_BUTTON) {
 
 
@@ -111,8 +116,9 @@ public class CustomDialog extends DialogFragment {
 
                 //For logout
 
-                confirmButton.setText("Logout");
+                confirmButton.setText(dialogExtra.getTitle());
                 circleIV.setImageResource(R.drawable.ic_gear);
+
 
             } else if (alertFlag == 4) {
 
@@ -120,6 +126,14 @@ public class CustomDialog extends DialogFragment {
 
                 circleIV.setImageResource(R.drawable.ic_gear);
                 confirmButton.setText("Delete");
+
+            } else if (alertFlag == 5) {
+
+                //For Exit
+
+                circleIV.setImageResource(R.drawable.ic_gear);
+                confirmButton.setText(dialogExtra.getTitle());
+
             }
 
         }

@@ -14,14 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".view.activity.EmployeeProfileActivity"/>
-        <activity
-            android:name=".view.activity.InsertActivity"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name=".view.activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden">
+
+        <activity android:name=".view.activity.StartingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,9 +23,25 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".view.activity.EmployeeProfileActivity" />
+
+        <activity
+            android:name=".view.activity.InsertActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name=".view.activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
         <service
             android:name=".service.SyncService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".service.PreloadService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
     </application>
 
 </manifest>

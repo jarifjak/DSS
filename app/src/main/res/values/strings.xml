@@ -63,5 +63,16 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
 
+    <string name="welcome">Welcome!</string>
+    <string name="login_hint">Login to continue</string>
+
+    <string name="developedBy">Developed by\nJarif</string>
+    <string name="email">Email</string>
+    <string name="emailhint">myname@dss.com</string>
+    <string name="password">Password</string>
+    <string name="password_hint">12345678</string>
+    <string name="login">Login</string>
+    <string name="version_demo_short">v 1.0</string>
+
 
 </resources>

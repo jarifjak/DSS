@@ -412,7 +412,6 @@ public class MainRepository {
 
             Employee employee = snapshot.getValue(Employee.class);
             repository.deleteEmployee(employee);
-            Log.d("aaaaaaaaaaaaaaaaaaaaa", "onChildRemoved: \n\n\n\n\n sdfsadfsadfsfs");
         }
 
         @Override

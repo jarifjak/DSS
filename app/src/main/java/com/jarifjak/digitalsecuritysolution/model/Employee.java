@@ -1,6 +1,7 @@
 package com.jarifjak.digitalsecuritysolution.model;
 
 import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -12,11 +13,12 @@ import com.google.gson.annotations.SerializedName;
 @Keep
 public class Employee {
 
-    @PrimaryKey(autoGenerate = false)
     @SerializedName("id")
     @Expose
     private int id;
 
+    @NonNull
+    @PrimaryKey(autoGenerate = false)
     @SerializedName("key")
     @Expose
     private String key;

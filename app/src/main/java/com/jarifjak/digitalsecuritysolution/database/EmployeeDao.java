@@ -30,7 +30,7 @@ public interface EmployeeDao {
     @Query("DELETE FROM employee_table")
     void deleteAllEmployees();
 
-    @Query("SELECT * FROM employee_table")
+    @Query("SELECT * FROM employee_table ORDER BY ID ASC")
     LiveData<List<Employee>> getEmployees();
 
     @Query("SELECT * FROM employee_table WHERE " + "branchName" + " = :selectedBranch ORDER BY " + "id" + " ASC")
@@ -38,6 +38,9 @@ public interface EmployeeDao {
 
     @Query("SELECT * FROM employee_table WHERE " + "id" + "= :id")
     LiveData<Employee> getEmployeeById(int id);
+
+    @Query("SELECT * FROM employee_table WHERE " + "`key`" + "= :key")
+    LiveData<Employee> getEmployeeByKey(String key);
 
     @Query("SELECT * FROM employee_table WHERE (" + "name" + " LIKE :search OR "
             + "bankCode" + " LIKE :search OR "

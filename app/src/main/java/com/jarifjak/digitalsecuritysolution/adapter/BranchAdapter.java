@@ -44,14 +44,16 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.nameTV.setText(branches.get(position).getName() + " (" + branches.get(position).getBankCode() + ")");
-        holder.addressTV.setText(branches.get(position).getAddress());
-        holder.firstMNameTV.setText(branches.get(position).getFirstManagerName());
-        holder.firstMNumberTV.setText(branches.get(position).getFirstManagerNumber());
-        holder.secondMNameTV.setText(branches.get(position).getSecondManagerName());
-        holder.secondMNumberTV.setText(branches.get(position).getSecondManagerNumber());
+        Branch branch = branches.get(position);
 
-        holder.extendedLayout.setVisibility(branches.get(position).isExtended() ? View.VISIBLE : View.GONE);
+        holder.nameTV.setText(branch.getId() + ". " + branch.getName() + " (" + branch.getBankCode() + ")");
+        holder.addressTV.setText(branch.getAddress());
+        holder.firstMNameTV.setText(branch.getFirstManagerName());
+        holder.firstMNumberTV.setText(branch.getFirstManagerNumber());
+        holder.secondMNameTV.setText(branch.getSecondManagerName());
+        holder.secondMNumberTV.setText(branch.getSecondManagerNumber());
+
+        holder.extendedLayout.setVisibility(branch.isExtended() ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -90,7 +92,7 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.ViewHolder
 
             if (id == R.id.editIV) {
 
-                listener.onEditClick(branches.get(getAbsoluteAdapterPosition()).getId());
+                listener.onEditClick(branches.get(getAbsoluteAdapterPosition()).getKey());
 
             } else if (id == R.id.cardMainContent) {
 
@@ -102,7 +104,7 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.ViewHolder
 
     public interface MyListener{
 
-        void onEditClick(int id);
+        void onEditClick(String key);
         void onCardClick(int position);
     }
 }

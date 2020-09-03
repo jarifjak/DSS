@@ -1,7 +1,10 @@
 package com.jarifjak.digitalsecuritysolution.view.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -103,13 +106,11 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
     private InsertViewModel viewModel;
     private static int activityType;
-    private static int id;
-    private String key;                                                         //store for updating
+    private static String key;                                                         //store for updating
     private List<String> branchNames;
     private static Branch branch;
     private DialogFragment dialog;
     private boolean busy;
-    private boolean dialogBusy;
 
 
     @Override
@@ -131,7 +132,7 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
             setTitle(activityType == 4 ? "Update Employee" : "Update Branch");
 
-            id = getIntent().getIntExtra(Constants.ID, 0);
+            key = getIntent().getStringExtra(Constants.KEY);
 
         }
 
@@ -174,6 +175,8 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
         } else if (activityType == 2) {
 
+            checkNameValidity();
+
             viewModel.getMaxIdOfBranch().observe(this, new Observer<Integer>() {
 
                 @Override
@@ -188,12 +191,13 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
             });
 
+
         } else if (activityType == 4) {
 
             branchNames = new ArrayList<>();
             setupBranchSpinner();
 
-            viewModel.getEmployeeById(id).observe(this, new Observer<Employee>() {
+            viewModel.getEmployeeByKey(key).observe(this, new Observer<Employee>() {
 
                 @Override
                 public void onChanged(Employee employee) {
@@ -202,8 +206,6 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
                         return;
                     }
-
-                    key = employee.getKey();
 
                     viewModel.getBranchByName(employee.getBranchName()).observe(InsertActivity.this, new Observer<Branch>() {
 
@@ -248,7 +250,9 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
         } else if (activityType == 5) {
 
-            viewModel.getBranchById(id).observe(this, new Observer<Branch>() {
+            checkNameValidity();
+
+            viewModel.getBranchByKey(key).observe(this, new Observer<Branch>() {
 
                 @Override
                 public void onChanged(Branch branch) {
@@ -257,10 +261,6 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
                         return;
                     }
-
-                    key = branch.getKey();
-
-                    Log.d("TAG", "\n\nonChanged: " + key);
 
                     setBranchInfo(branch);
                 }
@@ -297,6 +297,8 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
 
             branchOneCV.setVisibility(View.VISIBLE);
             branchOneButtonLayout.setVisibility(View.VISIBLE);
+
+
 
             if (activityType == 2) {
 
@@ -552,6 +554,48 @@ public class InsertActivity extends AppCompatActivity implements CustomDialog.Di
         branch.setSecondManagerNumber(secondManagerNumber);
 
         return true;
+    }
+
+
+    private void checkNameValidity() {
+
+        branchNameET.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                viewModel.getBranchByName(s.toString()).observe(InsertActivity.this, new Observer<Branch>() {
+
+                    @Override
+                    public void onChanged(Branch branch) {
+
+                        if (branch != null) {
+
+                            if (branch.getKey().equals(key))
+                                return;
+
+                            confirmBTN.setEnabled(false);
+                            branchNameET.setError("Choose different name");
+                            viewModel.getBranchByName(s.toString()).removeObserver(this);
+
+                        } else {
+
+                            confirmBTN.setEnabled(true);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private void insertOrUpdateBranch() {

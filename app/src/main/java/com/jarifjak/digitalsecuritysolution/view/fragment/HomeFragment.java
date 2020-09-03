@@ -1,16 +1,22 @@
 package com.jarifjak.digitalsecuritysolution.view.fragment;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,6 +31,7 @@ import com.jarifjak.digitalsecuritysolution.model.Employee;
 import com.jarifjak.digitalsecuritysolution.service.SyncService;
 import com.jarifjak.digitalsecuritysolution.utility.Constants;
 import com.jarifjak.digitalsecuritysolution.view.activity.EmployeeProfileActivity;
+import com.jarifjak.digitalsecuritysolution.view.activity.MainActivity;
 import com.jarifjak.digitalsecuritysolution.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
@@ -33,7 +40,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener{
+import static android.content.ContentValues.TAG;
+
+public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -211,7 +220,7 @@ public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener
 
     private void searchByAll(String search) {
 
-        String branch =  selectedBranch.equals("All") ? "%%" : selectedBranch;
+        String branch = selectedBranch.equals("All") ? "%%" : selectedBranch;
 
         viewModel.getEmployeesByAll(search, branch).observe(getViewLifecycleOwner(), new Observer<List<Employee>>() {
 
@@ -227,17 +236,30 @@ public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener
     }
 
     @Override
-    public void onCardClick(int id) {
+    public void onCardClick(String key) {
 
         Intent intent = new Intent(getActivity(), EmployeeProfileActivity.class);
 
-        intent.putExtra(Constants.EMPLOYEE_ID, id);
+        intent.putExtra(Constants.KEY, key);
 
         startActivity(intent);
     }
 
     @Override
-    public void onCallClick(int position) {
+    public void onCallClick(String number) {
+
+        Uri u = Uri.parse("tel:" + number);
+        Intent dialIntent = new Intent(Intent.ACTION_DIAL, u);
+
+        try {
+
+            startActivity(dialIntent);
+
+        } catch (SecurityException s) {
+
+            Log.d(TAG, "onCallClick: " + s.getMessage());
+        }
 
     }
+
 }

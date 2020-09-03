@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragment.LoginFragment">
+
+    <View
+        android:id="@+id/topBorder"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_220sdp"
+        android:background="@drawable/bg_top" />
+
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appLogoIV"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/ic_app_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appNameTV"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/appLogoIV"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/app_name"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_140sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headingOneTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/welcome"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/headingTwoTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/headingOneTV"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:text="@string/login_hint"
+                android:textColor="@color/CustomAccentFive"
+                android:textSize="@dimen/_18ssp"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:visibility="gone"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_alignParentEnd="true"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/emailTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/headingTwoTV"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:layout_marginTop="@dimen/_23sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="@string/email"
+                android:textColor="@color/CustomAccentFive"
+                android:textSize="@dimen/_11ssp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/emailET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/emailTV"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@android:color/white"
+                android:hint="@string/emailhint"
+                android:textSize="@dimen/_13ssp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+
+            <View
+                android:id="@+id/horizontalLine"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/emailET"
+                android:background="@color/fontColorGray" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/passwordTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/horizontalLine"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:inputType="textEmailAddress"
+                android:text="@string/password"
+                android:textColor="@color/CustomAccentFive"
+                android:textSize="@dimen/_11ssp" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/passwordET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/passwordTV"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@android:color/white"
+                android:inputType="textPassword"
+                android:hint="@string/password_hint"
+                android:textSize="@dimen/_13ssp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"/>
+
+            <View
+                android:id="@+id/horizontalLineTwo"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_below="@id/passwordET"
+                android:layout_marginBottom="@dimen/_60sdp"
+                android:background="@color/fontColorGray" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginButton"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/button_ripple_bg"
+        android:text="@string/login"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

@@ -47,7 +47,7 @@ public class EmployeeProfileActivity extends AppCompatActivity {
 
     private static EmployeeProfileActivity activity;
     private EmployeeProfileViewModel viewmodel;
-    private int employeeId;
+    private String employeeKey;
 
     public static EmployeeProfileActivity getInstance() {
         return activity;
@@ -67,7 +67,7 @@ public class EmployeeProfileActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setTitle("Employee Profile");
 
-        employeeId = getIntent().getIntExtra(Constants.EMPLOYEE_ID, 0);
+        employeeKey = getIntent().getStringExtra(Constants.KEY);
 
         initialize();
     }
@@ -77,7 +77,7 @@ public class EmployeeProfileActivity extends AppCompatActivity {
 
         viewmodel = new ViewModelProvider(this).get(EmployeeProfileViewModel.class);
 
-        viewmodel.getEmployeeById(employeeId).observe(this, employee -> {
+        viewmodel.getEmployeeByKey(employeeKey).observe(this, employee -> {
 
             if (employee == null) {
 
@@ -125,8 +125,7 @@ public class EmployeeProfileActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this, InsertActivity.class);
         intent.putExtra(Constants.ACTIVITY_TYPE, 4);
-        intent.putExtra(Constants.ID, employeeId);
-
+        intent.putExtra(Constants.KEY, employeeKey);
 
         startActivity(intent);
     }

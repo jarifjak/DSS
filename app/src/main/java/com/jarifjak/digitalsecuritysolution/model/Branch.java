@@ -15,11 +15,12 @@ import com.google.gson.annotations.SerializedName;
 public class Branch {
 
     @SerializedName("id")
-    @PrimaryKey(autoGenerate = false)
     private int id;
 
+    @NonNull
     @SerializedName("key")
     @Expose
+    @PrimaryKey(autoGenerate = false)
     private String key;
 
     @SerializedName("address")
