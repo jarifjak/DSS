@@ -34,7 +34,6 @@ public class StartingActivity extends AppCompatActivity implements FragmentListe
 
     @BindView(R.id.starting_root)
     RelativeLayout startingRoot;
-    private StartingViewModel viewModel;
     private SharedPrefs prefs;
 
     private FragmentTransaction transaction;
@@ -67,7 +66,6 @@ public class StartingActivity extends AppCompatActivity implements FragmentListe
 
     private void initialize() {
 
-        viewModel = new ViewModelProvider(this).get(StartingViewModel.class);
         prefs = new SharedPrefs(this);
 
         transaction = getSupportFragmentManager().beginTransaction();
@@ -76,6 +74,7 @@ public class StartingActivity extends AppCompatActivity implements FragmentListe
         loadNext(2000);
     }
 
+    
     private void loadNext(long delay) {
 
         new Handler().postDelayed(() -> {
