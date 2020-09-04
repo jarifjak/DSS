@@ -111,7 +111,7 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:hint="@string/name_hint"
-                    android:inputType="text"
+                    android:inputType="textCapWords|text"
                     android:textSize="@dimen/_13ssp" />
 
                 <View
@@ -367,7 +367,7 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:hint="@string/branch_name_demo"
-                    android:inputType="text"
+                    android:inputType="textCapWords|text"
                     android:textSize="@dimen/_13ssp" />
 
                 <View
@@ -435,7 +435,7 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:hint="@string/address_demo"
-                    android:inputType="text"
+                    android:inputType="textCapWords|text"
                     android:textSize="@dimen/_13ssp" />
 
 
@@ -531,7 +531,7 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:hint="@string/name_hint"
-                    android:inputType="text"
+                    android:inputType="textCapWords|text"
                     android:maxLength="20"
                     android:textSize="@dimen/_13ssp" />
 
@@ -601,7 +601,7 @@
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:hint="@string/name_hint_2"
-                    android:inputType="text"
+                    android:inputType="textCapWords|text"
                     android:textSize="@dimen/_13ssp" />
 
                 <View

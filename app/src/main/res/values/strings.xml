@@ -73,6 +73,7 @@
     <string name="password_hint">12345678</string>
     <string name="login">Login</string>
     <string name="version_demo_short">v 1.0</string>
+    <string name="no_employee">No Employee Found !</string>
 
 
 </resources>

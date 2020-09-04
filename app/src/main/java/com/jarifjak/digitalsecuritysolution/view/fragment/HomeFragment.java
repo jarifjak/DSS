@@ -1,8 +1,6 @@
 package com.jarifjak.digitalsecuritysolution.view.fragment;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -12,11 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -31,7 +28,6 @@ import com.jarifjak.digitalsecuritysolution.model.Employee;
 import com.jarifjak.digitalsecuritysolution.service.SyncService;
 import com.jarifjak.digitalsecuritysolution.utility.Constants;
 import com.jarifjak.digitalsecuritysolution.view.activity.EmployeeProfileActivity;
-import com.jarifjak.digitalsecuritysolution.view.activity.MainActivity;
 import com.jarifjak.digitalsecuritysolution.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
@@ -54,6 +50,10 @@ public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener
     AppCompatTextView totalEmployeeTV;
     @BindView(R.id.searchET)
     AppCompatEditText searchET;
+    @BindView(R.id.progressbar)
+    ProgressBar progressbar;
+    @BindView(R.id.noEmployeeTV)
+    AppCompatTextView noEmployeeTV;
 
     private MainViewModel viewModel;
     private EmployeeAdapter adapter;
@@ -97,6 +97,8 @@ public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener
 
         ButterKnife.bind(this, view);
 
+        progressbar.setVisibility(View.VISIBLE);
+
         initialize();
 
         return view;
@@ -108,10 +110,15 @@ public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener
 
         viewModel.getEmployeeFromRoom().observe(getViewLifecycleOwner(), employees -> {
 
+            noEmployeeTV.setVisibility(View.GONE);
+            progressbar.setVisibility(View.GONE);
+
             this.employees = employees;
             setupRecyclerView();
             adapter.notifyDataSetChanged();
             totalEmployeeTV.setText(String.valueOf(adapter.getItemCount()));
+
+            noEmployeeTV.setVisibility(adapter.getItemCount() == 0 ? View.VISIBLE : View.GONE );
 
         });
 
@@ -202,6 +209,8 @@ public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener
             adapter.updateFilteredList(employees);
             totalEmployeeTV.setText(String.valueOf(adapter.getItemCount()));
 
+            noEmployeeTV.setVisibility(adapter.getItemCount() == 0 ? View.VISIBLE : View.GONE );
+
         } else {
 
             viewModel.getEmployeesByBranch(selectedBranch).observe(getViewLifecycleOwner(), new Observer<List<Employee>>() {
@@ -211,6 +220,8 @@ public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener
 
                     adapter.updateFilteredList(employees);
                     totalEmployeeTV.setText(String.valueOf(adapter.getItemCount()));
+
+                    noEmployeeTV.setVisibility(adapter.getItemCount() == 0 ? View.VISIBLE : View.GONE );
 
                 }
             });
@@ -228,6 +239,9 @@ public class HomeFragment extends Fragment implements EmployeeAdapter.MyListener
             public void onChanged(List<Employee> employees) {
 
                 adapter.updateFilteredList(employees);
+
+                noEmployeeTV.setVisibility(adapter.getItemCount() == 0 ? View.VISIBLE : View.GONE );
+
                 viewModel.getEmployeesByAll(search, selectedBranch).removeObserver(this);
 
             }

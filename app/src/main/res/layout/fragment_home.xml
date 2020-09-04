@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:focusable="true"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:focusable="true"
     tools:context=".view.fragment.HomeFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.50"/>
+        app:layout_constraintGuide_percent="0.50" />
 
     <View
         android:id="@+id/topBorder"
@@ -29,29 +29,33 @@
         android:id="@+id/searchET"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"
-        android:imeOptions="actionSearch"
         android:layout_marginStart="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_25sdp"
         android:layout_marginEnd="@dimen/_25sdp"
         android:background="@drawable/bg_search_edit_text"
         android:elevation="2dp"
         android:hint="@string/searchHint"
+        android:drawableStart="@drawable/ic_search"
+        android:drawableTint="@color/CustomAccentFive"
+        android:drawablePadding="@dimen/_10sdp"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         android:paddingStart="@dimen/_15sdp"
         android:textAlignment="textStart"
         android:textSize="@dimen/_13ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry,UnusedAttribute" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/selectBranchLayout"
         android:layout_width="@dimen/_115sdp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_spinner"
         android:layout_marginStart="@dimen/_35sdp"
         android:layout_marginEnd="@dimen/_8sdp"
-        app:layout_constraintBottom_toBottomOf="@id/topBorder"
+        android:background="@drawable/bg_spinner"
         android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/topBorder"
         app:layout_constraintEnd_toEndOf="@id/guideline_v_50"
         app:layout_constraintTop_toBottomOf="@id/topBorder">
 
@@ -120,11 +124,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/_115sdp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_spinner"
-        app:layout_constraintBottom_toBottomOf="@id/topBorder"
-        android:elevation="10dp"
-        app:layout_constraintStart_toStartOf="@id/guideline_v_50"
         android:layout_marginStart="@dimen/_8sdp"
+        android:background="@drawable/bg_spinner"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/topBorder"
+        app:layout_constraintStart_toStartOf="@id/guideline_v_50"
         app:layout_constraintTop_toBottomOf="@id/topBorder">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -169,5 +173,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/selectBranchLayout"
         tools:listitem="@layout/model_employee" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="@dimen/_38sdp"
+        android:layout_height="@dimen/_38sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/_130sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/noEmployeeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_employee"
+        android:layout_marginTop="@dimen/_130sdp"
+        app:layout_constraintTop_toBottomOf="@id/selectBranchLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="@dimen/_13ssp"
+        android:textStyle="bold"
+        android:textColor="@color/CustomAccentFive"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
