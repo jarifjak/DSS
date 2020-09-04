@@ -90,11 +90,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/horizontalLine"
                 android:layout_toEndOf="@id/branchNameHintTV"
-                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:textColor="@color/fontColorBlack"
                 android:textStyle="bold"
-                tools:text="@string/branch_name" />
+                tools:text="@string/branch_name_demo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/bankCodeHintTV"
