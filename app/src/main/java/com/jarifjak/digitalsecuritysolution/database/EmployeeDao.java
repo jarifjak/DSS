@@ -46,7 +46,8 @@ public interface EmployeeDao {
             + "bankCode" + " LIKE :search OR "
             + "number" + " LIKE :search OR "
             + "accountNumber" + " LIKE :search)" + " AND "
-            + "branchName LIKE :selectedBranch")
+            + "branchName LIKE :selectedBranch"
+            + " ORDER BY id ASC")
     LiveData<List<Employee>> getEmployeesByAll(String search, String selectedBranch);
 
     @Query("SELECT MAX(id) FROM employee_table")

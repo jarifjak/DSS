@@ -36,7 +36,7 @@
         android:layout_marginTop="@dimen/_90sdp"
         android:background="@drawable/bg_spinner"
         app:layout_constraintEnd_toEndOf="@id/guideline_v_90"
-        android:elevation="25dp"
+        android:elevation="15dp"
         app:layout_constraintStart_toStartOf="@id/guideline_v_10"
         app:layout_constraintTop_toTopOf="parent">
 
