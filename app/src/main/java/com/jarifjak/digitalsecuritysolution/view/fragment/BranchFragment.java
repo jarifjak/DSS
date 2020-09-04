@@ -34,6 +34,8 @@ public class BranchFragment extends Fragment implements BranchAdapter.MyListener
     AppCompatTextView totalBranchTV;
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.noBranchTV)
+    AppCompatTextView noBranchTV;
 
     private List<Branch> branches;
     private BranchAdapter adapter;
@@ -77,12 +79,18 @@ public class BranchFragment extends Fragment implements BranchAdapter.MyListener
 
                 if (branches == null) {
 
+                    noBranchTV.setVisibility(View.VISIBLE);
                     return;
+
+                } else {
+
+                    noBranchTV.setVisibility(View.GONE);
+
                 }
 
                 BranchFragment.this.branches = branches;
 
-                totalBranchTV.setText("Total Branch: "+ branches.size());
+                totalBranchTV.setText(String.valueOf(branches.size()));
 
                 setupRecyclerView();
                 adapter.notifyDataSetChanged();

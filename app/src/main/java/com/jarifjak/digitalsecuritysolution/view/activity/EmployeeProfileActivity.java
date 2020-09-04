@@ -2,8 +2,11 @@ package com.jarifjak.digitalsecuritysolution.view.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,8 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.content.ContentValues.TAG;
 
 public class EmployeeProfileActivity extends AppCompatActivity {
 
@@ -129,4 +134,41 @@ public class EmployeeProfileActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+    private void openInDialer(String number) {
+
+        Uri u = Uri.parse("tel:" + number);
+        Intent dialIntent = new Intent(Intent.ACTION_DIAL, u);
+
+        try {
+
+            startActivity(dialIntent);
+
+        } catch (SecurityException s) {
+
+            Log.d(TAG, "onCallClick: " + s.getMessage());
+        }
+    }
+
+    @OnClick({R.id.firstMNumberTV, R.id.secondMNumberTV, R.id.numberTV})
+    public void onViewClicked(View view) {
+
+        switch (view.getId()) {
+
+            case R.id.firstMNumberTV:
+                openInDialer(firstMNumberTV.getText().toString());
+                break;
+
+            case R.id.secondMNumberTV:
+                openInDialer(secondMNameTV.getText().toString());
+                break;
+
+            case R.id.numberTV:
+                openInDialer(numberTV.getText().toString());
+                break;
+
+
+        }
+    }
+
 }

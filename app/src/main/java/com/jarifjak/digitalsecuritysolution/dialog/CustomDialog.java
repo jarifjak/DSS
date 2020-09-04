@@ -1,6 +1,7 @@
 package com.jarifjak.digitalsecuritysolution.dialog;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -87,6 +88,7 @@ public class CustomDialog extends DialogFragment {
 
         return view;
     }
+
 
     @SuppressLint("SetTextI18n")
     private void initialize() {
