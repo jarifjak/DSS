@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="@id/verticalLine"
         android:textSize="@dimen/_13ssp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"/>
+        android:textColor="@color/CustomAccentSeven"/>
 
     <View
         android:id="@+id/verticalLine"
@@ -48,9 +48,9 @@
         app:layout_constraintTop_toTopOf="@id/verticalLine"
         app:layout_constraintBottom_toBottomOf="@id/verticalLine"
         android:textSize="@dimen/_13ssp"
-        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginStart="@dimen/_15sdp"
         android:textStyle="bold"
-        android:textColor="@android:color/white"/>
+        android:textColor="@color/newFour"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
