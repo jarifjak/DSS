@@ -46,10 +46,10 @@
         android:layout_centerHorizontal="true"
         android:gravity="center"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
         android:text="@string/developedBy"
         android:textColor="@color/CustomAccentFive"
-        android:textSize="@dimen/_13ssp" />
+        android:textSize="@dimen/_11ssp" />
 
 
 </RelativeLayout>

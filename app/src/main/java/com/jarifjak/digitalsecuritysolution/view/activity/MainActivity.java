@@ -196,11 +196,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
         if (item.getItemId() == R.id.nav_about_app) {
 
             showCustomDialog(Constants.DIALOG_ONE_BUTTON, new DialogExtra("About", "This Application is created for maintaining " +
-                                                                                                    "employee data and influence better control over them"));
+                                                                                                    "employee data and influence better control over them.\n\nAuthorized by DSS"));
 
         } else if (item.getItemId() == R.id.nav_developer_info) {
 
-            showCustomDialog(Constants.DIALOG_ONE_BUTTON, new DialogExtra("Developer Info","This Application is developed by\n\nJarif Alam Khan\n" +
+            showCustomDialog(Constants.DIALOG_ONE_BUTTON, new DialogExtra("Developer Info","This application is developed by\n\nJarif Alam Khan\n" +
                                                                                                             "Software Engineer\n\n" +
                                                                                                              "Email : jarifjak@gmail.com"));
 
