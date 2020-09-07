@@ -748,7 +748,7 @@
                 android:layout_marginStart="@dimen/_7sdp"
                 android:layout_marginEnd="@dimen/_7sdp"
                 android:background="@drawable/button_ripple_bg"
-                android:text="@string/confirm"
+                android:text="@string/insert"
                 android:textColor="@android:color/white"
                 android:visibility="visible"
                 tools:ignore="UnusedAttribute" />
