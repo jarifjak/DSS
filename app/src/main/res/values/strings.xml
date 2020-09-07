@@ -20,7 +20,7 @@
     <string name="add_employee">Add Employee</string>
     <string name="add_branch">Add Branch</string>
     <string name="data_entry">Data Entry</string>
-    <string name="enter_data_heading">Insert new date here!</string>
+    <string name="enter_data_heading">Insert new data here!</string>
     <string name="name">Name</string>
     <string name="name_hint">Arif Hossain</string>
     <string name="id">Id</string>

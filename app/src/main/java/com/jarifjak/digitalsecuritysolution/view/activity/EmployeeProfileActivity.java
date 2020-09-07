@@ -160,7 +160,7 @@ public class EmployeeProfileActivity extends AppCompatActivity {
                 break;
 
             case R.id.secondMNumberTV:
-                openInDialer(secondMNameTV.getText().toString());
+                openInDialer(secondMNumberTV.getText().toString());
                 break;
 
             case R.id.numberTV:
